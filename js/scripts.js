@@ -17,17 +17,14 @@ function pigWord(word) {
   }
 }
 
-// function pigLatin(text) {
-//   if (text.trim().length === 0) {
-//     return 0;
-//   }
-//   let vowel = findFirstVowel(); 
-//   piggedArray = [];
-//   let textArray = text.split(" ");
-//   if (vowel === 0) {
-//     piggedArray.push(text + "way");
-//   }
-  
-// }
-pigWord("apple");
+function pigLatin(text) {
+  let pigText = text.split(" ");
+  let pigLatinArray = [];
+  for (let i = 0; i <= pigText.length - 1; i++) {
+    pigLatinArray.push(pigWord(pigText[i]));
+  };
+  return pigLatinArray.join(" ")
+}
+
+pigLatin("apple");
 //UI Logic
