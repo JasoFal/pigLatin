@@ -28,11 +28,23 @@ function pigLatin(text) {
   return pigLatinArray.join(" ");
 }
 
+function onlyLetters(str) {
+  return !/[^a-zA-Z]/.test(str);
+}
+
 console.log(pigLatin("James screams At the tomato"));
 //UI Logic
 function handleFormSubmission(event) {
   event.preventDefault();
   const prePigText = document.getElementById("text-passage").value;
+  let errorTesting = prePigText.split(" ");
+  errorTesting.forEach(element => {
+    if (onlyLetters(element)) {
+      console.log("Theres a Number!");
+    } else {
+      document.querySelector("p#pigged-results").innerText = "Please enter Text only!";
+    }
+  });
   const pigGenerator = pigLatin(prePigText);
   document.querySelector("p#pigged-results").innerText = pigGenerator;
 }
