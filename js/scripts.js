@@ -30,3 +30,13 @@ function pigLatin(text) {
 
 console.log(pigLatin("James screams At the tomato"));
 //UI Logic
+function handleFormSubmission(event) {
+  event.preventDefault();
+  const prePigText = document.getElementById("text-passage").value;
+  const pigGenerator = pigLatin(prePigText);
+  document.querySelector("p#pigged-results").innerText = pigGenerator;
+}
+
+window.addEventListener("load", function () {
+  this.document.querySelector("form#user-input").addEventListener("submit", handleFormSubmission);
+});
