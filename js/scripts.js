@@ -28,8 +28,8 @@ function pigLatin(text) {
   return pigLatinArray.join(" ");
 }
 
-function onlyLetters(str) {
-  return !/[^a-zA-Z]/.test(str);
+function hasNumbersSymbols(str) {
+  return !/^[a-z]+$/i.test(str);
 }
 
 console.log(pigLatin("James screams At the tomato"));
@@ -39,14 +39,14 @@ function handleFormSubmission(event) {
   const prePigText = document.getElementById("text-passage").value;
   let errorTesting = prePigText.split(" ");
   errorTesting.forEach(element => {
-    if (onlyLetters(element)) {
-      console.log("Theres a Number!");
-    } else {
+    if (hasNumbersSymbols(element)) {
       document.querySelector("p#pigged-results").innerText = "Please enter Text only!";
+    } else {
+      console.log("It's only letters!");
+      const pigGenerator = pigLatin(prePigText);
+      document.querySelector("p#pigged-results").innerText = pigGenerator;
     }
   });
-  const pigGenerator = pigLatin(prePigText);
-  document.querySelector("p#pigged-results").innerText = pigGenerator;
 }
 
 window.addEventListener("load", function () {
